@@ -4,27 +4,22 @@ public:
         
         int ans = 0;
         if(J=="" || S=="")
-            return ans;
+            ans;
+                
+        std::map<char, int> table;
+        for(int i = 0; i < J.size(); i++)
+            table.insert(table.begin(), std::pair<char,int>(J[i], 0));
         
-        
-        vector<char> input;
-        for(int i = 0; i < J.length(); i++)
+        for(int j = 0; j < S.size(); j++)
         {
-            if(find(input.begin(), input.end(), J[i])==input.end())
-                input.push_back(J[i]);
+            std::map<char,int>::iterator iterator = table.find(S[j]);
+            if (iterator != table.end())
+                iterator->second++;
         }
         
-        for(int j = 0; j < input.size(); j++)
-        {
-            string::iterator pos = find(S.begin(), S.end(), input[j]);    
+        for(map<char, int>::iterator it = table.begin(); it!=table.end(); it++)
+            ans+= it->second;
             
-            while(pos!=S.end())
-            {
-                ans++;
-                pos = find(pos+1, S.end(), input[j]);
-            }
-        }
-        return ans;
-
+        return ans;        
     }
 };
