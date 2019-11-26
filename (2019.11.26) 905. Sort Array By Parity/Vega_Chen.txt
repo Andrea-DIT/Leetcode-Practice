@@ -1,0 +1,15 @@
+class Solution {
+public:
+    vector<int> sortArrayByParity(vector<int>& A) {
+        vector<int> ans, odd;
+        for(auto i: A){
+            if (i&1)
+                odd.push_back(i);
+            else
+                ans.push_back(i);
+        }
+        ans.insert(ans.end(), odd.begin(), odd.end());
+        
+        return ans;
+    }
+};
