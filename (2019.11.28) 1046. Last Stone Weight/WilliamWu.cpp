@@ -11,11 +11,11 @@ public:
 		stones.erase(stones.begin());
 
 		int diff = n1 - n2;
-        if(diff>0)
-        {
-		    stones.push_back(diff);
-		    std::sort(stones.begin(), stones.end(), std::greater<int>());
-        }
+		if(diff>0)
+		{
+			stones.push_back(diff);
+			std::sort(stones.begin(), stones.end(), std::greater<int>());
+		}
 	}
 
 	if (stones.size() == 0)
