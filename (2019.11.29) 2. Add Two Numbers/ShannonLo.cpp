@@ -11,8 +11,7 @@ public:
             {
                 sum = (l2->val+add)%10;
                 add = (l2->val + add)/10;
-                
-            }
+			}
             else if (l2 == NULL)
             {
                 sum = (l1->val+add)%10;
