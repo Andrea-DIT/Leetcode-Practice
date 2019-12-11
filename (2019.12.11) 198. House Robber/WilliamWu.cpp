@@ -23,7 +23,7 @@ public:
 		if (now == nullptr)
 			return;
 
-        int val = 0;
+		int val = 0;
 		if (now->val - 1 >= 0)
 			val = nums[now->val - 1];
 		int new_total = total + val;
@@ -43,7 +43,7 @@ public:
 		}
 	}
 
-    void deleteNode(Node* now)
+	void deleteNode(Node* now)
 	{
 		if (now == nullptr)
 			return;
@@ -61,13 +61,12 @@ public:
 		Node* root = new Node(nullptr, -1);
 		Node* tmp = root;
         
-        cout << "William1" << endl;
-        int max_value = -1;
+		cout << "William1" << endl;
+		int max_value = -1;
 		int total = 0;
 		createTree(tmp, size, total, max_value, nums);
-
-        cout << "William2" << endl;
-        deleteNode(root);
+		cout << "William2" << endl;
+		deleteNode(root);
 		return max_value;
 	}
 };
