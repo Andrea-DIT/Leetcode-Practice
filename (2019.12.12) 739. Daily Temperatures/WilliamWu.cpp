@@ -2,7 +2,7 @@ class Solution {
 public:
     vector<int> dailyTemperatures(vector<int>& T) {
         
-        int max = T.back();
+        int max = 0;
         vector<int> ans(T.size(), 0);
         
         for(int i = T.size()-1; i>=0; i--)
@@ -11,13 +11,16 @@ public:
                 ans[i] = 0;
             else
             {
-                for(int j = i+1; j < T.size(); j++)
+                int j = i + 1;
+                while(j < T.size())
                 {
-                    if(T[j]>T[i])
+                    if(T[i]<T[j])
                     {
-                        ans[i] = (j-i);
+                        ans[i] = j-i;
                         break;
                     }
+                    else
+                        j = ans[j]+j;
                 }
             } 
             
