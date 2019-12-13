@@ -2,31 +2,37 @@ class Solution {
 public:
     vector<int> dailyTemperatures(vector<int>& T) {
         
-
-        vector<int> ans(T.size(), 0);
-        map<int, int> list;
+        int max = T.back();
+        stack<int> tmp;
         
-        for(int i = T.size()-1; i >=0 ; i--)
-        {         
-            for (map<int,int>::iterator iter=list.begin(); iter!=list.end(); iter++)
+        for(int i = T.size()-1; i>=0; i--)
+        {
+            if(T[i]>=max)
+                tmp.push(0);
+            else
             {
-                if(iter->first > T[i])
+                for(int j = i+1; j < T.size(); j++)
                 {
-                    if(ans[i] == 0 || ans[i] > (iter->second - i) )
+                    if(T[j]>T[i])
                     {
-                        ans[i] = iter->second - i;
-                        cout << i << ": " << ans[i] << endl;
+                        tmp.push(j-i);
+                        break;
                     }
                 }
-            }
+            } 
             
-            if(list.find(T[i])!=list.end())
-                list[T[i]] = i;
-            else
-                list.insert(pair<int, int>(T[i], i));
+            if(T[i]>max)
+                max = T[i];
+        }
+        
+        vector<int> ans;
+        
+        while(tmp.size()>0)
+        {
+            ans.push_back(tmp.top());
+            tmp.pop();
         }
         
         return ans;
-
     }
 };
