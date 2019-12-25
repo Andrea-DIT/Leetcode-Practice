@@ -1,26 +1,21 @@
 class Solution {
 public:
-    
-    int func(int n)
-    {
-        int a = n;
-        int b = 0;
-        while(a>0)
+    int majorityElement(vector<int>& nums) {
+  
+        map<int, int> table;
+        int thresh = nums.size()/2;
+        int ans = 0;
+        
+        for(int i = 0; i < nums.size(); i++)
         {
-            b = b + a%10;
-            a /= 10;
+            table[nums[i]]++;
+            if(table[nums[i]] > thresh)
+            {
+                ans = nums[i];
+                break;
+            }
         }
-        return b;
-    }
-    
-    int addDigits(int num) {
-        
-        int ans = num;
-        
-        while((ans/10)!=0)
-            ans = func(ans);
         
         return ans;
-
     }
 };
