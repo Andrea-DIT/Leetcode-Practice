@@ -4,8 +4,7 @@ public:
         
         vector<vector<int>> map;
         for(int j = 0; j < n; j++)
-            map.push_back(vector<int>(m, 0));
-        map[0][0] = 1;
+            map.push_back(vector<int>(m, 1));
         
         for(int j = 0; j < n; j++)
         {
