@@ -1,25 +1,25 @@
 class Solution {
-    
 public:
-    
-    int getOnes(int a)
-    {
-        int count = 0;
-        while(a>0)
-        {
-            if(a & 0x01)
-                count++;
-            a >>= 1;
-        }
-        return count;
-    }
-    
     vector<int> countBits(int num) {
         
-        vector<int> ans;
+        if(num==0)
+            return vector<int>{0};
+        vector<int> ans{0,1};
+        if(num==1)
+            return ans;
         
-        for(int i = 0; i <= num; i++)
-            ans.push_back(getOnes(i));            
+        int length = ans.size();
+        int counter = 0;
+        for(int i = 2; i <= num; i++)
+        {
+            ans.push_back(1+ans[counter]);
+            counter++;
+            if(counter==length)
+            {
+                counter=0;
+                length = ans.size();
+            }
+        }
         
         return ans;
     }
