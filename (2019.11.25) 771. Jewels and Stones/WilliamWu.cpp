@@ -2,29 +2,17 @@ class Solution {
 public:
     int numJewelsInStones(string J, string S) {
         
-        int ans = 0;
+        int result = 0;
         if(J=="" || S=="")
-            return ans;
+            return result;
         
-        
-        vector<char> input;
-        for(int i = 0; i < J.length(); i++)
-        {
-            if(find(input.begin(), input.end(), J[i])==input.end())
-                input.push_back(J[i]);
-        }
-        
-        for(int j = 0; j < input.size(); j++)
-        {
-            string::iterator pos = find(S.begin(), S.end(), input[j]);    
+        std::map<char, int> table;
+        for(int i = 0; i < S.size(); i++)
+            table[S[i]]++;
+                 
+        for(int j = 0; j < J.size(); j++)
+            result += table[J[j]];
             
-            while(pos!=S.end())
-            {
-                ans++;
-                pos = find(pos+1, S.end(), input[j]);
-            }
-        }
-        return ans;
-
+        return result;        
     }
 };

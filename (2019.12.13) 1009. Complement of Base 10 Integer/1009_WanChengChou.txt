@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int bitwiseComplement(int N)
+    {
+        int num = 0, power = 0;
+        if(N == 0)
+        {
+            return 1;
+        }
+        else
+        {
+            while(N/2 != 0)
+            {
+                if(!(N % 2)) num += pow(2, power);
+                N = N / 2;
+                power++;
+            }
+        }
+        return num;
+    }
+};
